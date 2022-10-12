@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] int BulletDamage = 50;
     Rigidbody2D rb;
     [SerializeField] float BulletForce = 5f;
-    // bool FireDirection = true;
     PlayerController PlayerScript;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,7 @@ public class Bullet : MonoBehaviour
         }else {
             rb.AddForce(Vector2.left * BulletForce, ForceMode2D.Impulse);
         }
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame

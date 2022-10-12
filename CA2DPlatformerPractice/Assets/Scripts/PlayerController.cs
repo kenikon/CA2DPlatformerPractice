@@ -25,7 +25,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMoveKeyboard();
+        PlayerFire();
 
+    }
+
+    void PlayerFire() {
         if (Input.GetMouseButton(0)) {
             if (Time.time >= NextAttackTime) {
                 Instantiate(Bullet, FirePoint.position, Quaternion.Euler(0, 0, 0));
@@ -39,13 +43,11 @@ public class PlayerController : MonoBehaviour
         if (MovementX > 0f) {
             Player.velocity = new Vector2(MovementX * MoveSpeed, Player.velocity.y);
             transform.localScale = new Vector2(1, 1);
-            // Bullet.GetComponent<Bullet>().SetFireDirection(true);
             FireDirection = true;
         }
         else if (MovementX < 0f) {
             Player.velocity = new Vector2(MovementX * MoveSpeed, Player.velocity.y);
             transform.localScale = new Vector2(-1, 1);
-            // Bullet.GetComponent<Bullet>().SetFireDirection(false);
             FireDirection = false;
         }
         else {
